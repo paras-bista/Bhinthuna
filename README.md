@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
+# Bhintuna Restaurant Website
 
-## Project info
+Modern, conversion-focused website for Bhintuna - an authentic Nepali restaurant in Parramatta serving traditional bara, momo, and authentic Nepali cuisine.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Sprint 1 Delivery
 
-## How can I edit this code?
+### Features Implemented
+- ✅ **Hero Section** - Primary value proposition with strong CTA
+- ✅ **Trust Section** - Social proof elements to build credibility
+- ✅ **Menu Preview** - Featured dishes with appetizing visuals
+- ✅ **Catering Teaser** - Introduction to catering services
+- ✅ **Final CTA** - Conversion-optimized call-to-action
+- ✅ **Full Menu Page** - Complete menu with organized categories
+- ✅ **Responsive Design** - Mobile-first approach (320px - 1280px+)
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Framework:** React 18 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Testing:** Vitest
+- **Package Manager:** Bun
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📦 Installation & Setup
 
-Changes made via Lovable will be committed automatically to this repo.
+```bash
+# Clone the repository
+git clone https://github.com/triovatelabs/ProjectSubmission_PB.git
 
-**Use your preferred IDE**
+# Navigate to project directory
+cd bhintuna
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Install dependencies
+bun install
+# or
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
+bun dev
+# or
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🧪 Testing
 
-**Use GitHub Codespaces**
+```bash
+# Run tests
+bun test
+# or
+npm test
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Header.tsx      # Navigation header
+│   ├── Hero.tsx        # Hero section
+│   ├── TrustSection.tsx
+│   ├── MenuPreview.tsx
+│   ├── CateringTeaser.tsx
+│   ├── FinalCTA.tsx
+│   ├── Footer.tsx
+│   └── ui/             # shadcn/ui components
+├── pages/              # Route pages
+│   ├── Index.tsx       # Home page
+│   ├── FullMenu.tsx    # Full menu page
+│   └── NotFound.tsx    # 404 page
+├── lib/                # Utility functions
+└── hooks/              # Custom React hooks
+```
 
-This project is built with:
+## 🔄 Development Workflow (SOP-Compliant)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project follows strict Development SOPs:
 
-## How can I deploy this project?
+1. **Branch per feature** - Never push directly to `main`
+2. **Pull Request required** - All changes must go through PR review
+3. **PR must include:**
+   - Screenshots (desktop + mobile)
+   - Lighthouse scores
+   - QA evidence across breakpoints (320px, 375px, 768px, 1024px, 1280px)
+4. **Commit standards** - Descriptive messages with clear intent
+5. **Preview deployments** - Validate changes in production-like environment
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Creating a Feature Branch
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+# Create feature branch
+git checkout -b feat/your-feature-name
 
-Yes, you can!
+# Make changes, then commit
+git add .
+git commit -m "feature: descriptive message about what changed"
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Push to remote
+git push -u origin feat/your-feature-name
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Then create a PR on GitHub with full documentation.
+
+## 📱 Responsive Breakpoints
+
+Tested and optimized for:
+- 320px (Small mobile)
+- 375px (iPhone SE)
+- 768px (Tablet)
+- 1024px (Laptop)
+- 1280px+ (Desktop)
+
+## 🎯 Performance Goals
+
+- Lighthouse Performance: 90+
+- Lighthouse Accessibility: 90+
+- Lighthouse Best Practices: 90+
+- Lighthouse SEO: 90+
+
+## 📄 License
+
+Private project for Bhintuna Restaurant
+
+## 🤝 Contributing
+
+This project follows a strict PR-based workflow. See Development Workflow section above.
