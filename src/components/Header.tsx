@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "Home", href: "#" },
-  { label: "Menu", href: "#menu" },
-  { label: "Catering", href: "#catering" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/", type: "route" },
+  { label: "Menu", href: "/menu", type: "route" },
+  { label: "Catering", href: "#catering", type: "hash" },
+  { label: "About", href: "#about", type: "hash" },
+  { label: "Contact", href: "#contact", type: "hash" },
 ];
 
 const Header = () => {
@@ -28,20 +29,30 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Bhintuna House" className="h-10 md:h-12 w-auto" />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
-            >
-              {item.label}
-            </a>
+            item.type === "route" ? (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
+              >
+                {item.label}
+              </a>
+            )
           ))}
         </nav>
 
@@ -69,14 +80,25 @@ const Header = () => {
         <div className="md:hidden bg-background/98 backdrop-blur-lg border-t border-border animate-fade-in">
           <nav className="container py-6 flex flex-col gap-4">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
-              >
-                {item.label}
-              </a>
+              item.type === "route" ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              )
             ))}
             <a
               href="tel:+610286064818"

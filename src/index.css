@@ -61,6 +61,12 @@
     --sidebar-accent-foreground: 40 30% 92%;
     --sidebar-border: 216 40% 25%;
     --sidebar-ring: 37 72% 59%;
+
+    /* Animation tokens for warm, welcoming feel */
+    --animation-duration: 0.8s;
+    --animation-easing: cubic-bezier(0.16, 1, 0.3, 1); /* Smooth, warm easing */
+    --animation-delay-base: 0ms;
+    --animation-delay-stagger: 200ms;
   }
 }
 
@@ -104,5 +110,162 @@
 
   .shadow-header {
     box-shadow: 0 2px 20px -2px hsla(216, 70%, 14%, 0.5);
+  }
+
+  /* Performance-optimized Hero animations */
+  /* Only uses opacity and transform: translateY() for optimal performance */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes hero-warm-entrance {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Headline animation - appears first */
+    .hero-animate-headline {
+      animation: hero-warm-entrance var(--animation-duration) var(--animation-easing) var(--animation-delay-base) forwards;
+      opacity: 0; /* Initial state */
+    }
+
+    /* Subheadline animation - 200ms delay */
+    .hero-animate-subhead {
+      animation: hero-warm-entrance var(--animation-duration) var(--animation-easing) calc(var(--animation-delay-base) + var(--animation-delay-stagger)) forwards;
+      opacity: 0; /* Initial state */
+    }
+
+    /* CTA animation - 400ms delay for conversion focus */
+    .hero-animate-cta {
+      animation: hero-warm-entrance var(--animation-duration) var(--animation-easing) calc(var(--animation-delay-base) + var(--animation-delay-stagger) * 2) forwards;
+      opacity: 0; /* Initial state */
+    }
+
+    /* Optional: Tagline with earlier entrance */
+    .hero-animate-tagline {
+      animation: hero-warm-entrance var(--animation-duration) var(--animation-easing) 0ms forwards;
+      opacity: 0; /* Initial state */
+    }
+  }
+
+  /* Respect user motion preferences - no animation */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-animate-headline,
+    .hero-animate-subhead,
+    .hero-animate-cta,
+    .hero-animate-tagline {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  /* ===== Menu UI: Tabs & Cards (SOP-DEV-008 Compliant) ===== */
+  
+  /* Horizontal Scrollable Tabs (Mobile-First) */
+  .menu-tabs-container {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .menu-tabs-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-tab {
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .menu-tab-active {
+    box-shadow: 0 4px 12px -2px hsla(37, 72%, 59%, 0.3);
+  }
+
+  /* Menu Card Design (Performance Optimized) */
+  .menu-card {
+    will-change: transform;
+    animation: menu-fade-in 0.4s ease-out forwards;
+  }
+
+  /* Fixed aspect ratio container prevents CLS */
+  .menu-card-image {
+    position: relative;
+    width: 100%;
+  }
+
+  .menu-card-image::before {
+    content: "";
+    display: block;
+    padding-top: 75%; /* 4:3 aspect ratio */
+  }
+
+  .menu-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Price Badge - High Contrast for Visibility */
+  .menu-card-price {
+    backdrop-filter: blur(4px);
+  }
+
+  /* Menu Grid - Mobile First Responsive */
+  @media (max-width: 767px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .menu-tabs {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .menu-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Smooth transitions for category switching - No CLS */
+  @keyframes menu-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Reduced motion support for menu animations */
+  @media (prefers-reduced-motion: reduce) {
+    .menu-card {
+      animation: none;
+    }
   }
 }

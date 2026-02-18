@@ -21,16 +21,14 @@ const Hero = () => {
         <div className="max-w-2xl">
           {/* Tagline */}
           <p
-            className="text-primary font-medium text-sm md:text-base tracking-[0.2em] uppercase mb-4 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.1s" }}
+            className="text-primary font-medium text-sm md:text-base tracking-[0.2em] uppercase mb-4 hero-animate-tagline"
           >
             Nepali Restaurant · Parramatta
           </p>
 
           {/* Headline */}
           <h1
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.25s" }}
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 hero-animate-headline"
           >
             Authentic Nepali Flavours{" "}
             <span className="text-gold-gradient italic">in the Heart of</span>{" "}
@@ -39,8 +37,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p
-            className="text-foreground/70 text-base md:text-lg leading-relaxed max-w-lg mb-10 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
+            className="text-foreground/70 text-base md:text-lg leading-relaxed max-w-lg mb-10 hero-animate-subhead"
           >
             Experience traditional hospitality, handcrafted dishes, and catering
             for your special occasions.
@@ -48,8 +45,7 @@ const Hero = () => {
 
           {/* CTAs */}
           <div
-            className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.55s" }}
+            className="flex flex-col sm:flex-row gap-4 hero-animate-cta"
           >
             <a
               href="tel:+610286064818"

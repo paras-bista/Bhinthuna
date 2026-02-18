@@ -20,14 +20,14 @@ const reviews = [
 
 const TrustSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-16 md:py-24 bg-cream">
       <div className="container">
         {/* Heading */}
         <div className="text-center mb-12 md:mb-16">
           <p className="text-primary font-medium text-sm tracking-[0.2em] uppercase mb-3">
             Our Community
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-navy">
             Loved by Parramatta
           </h2>
           <div className="flex items-center justify-center gap-1 mb-3">
@@ -35,7 +35,7 @@ const TrustSection = () => {
               <Star key={i} className="w-5 h-5 fill-primary text-primary" />
             ))}
           </div>
-          <p className="text-muted-foreground text-base max-w-md mx-auto">
+          <p className="text-navy/70 text-base max-w-md mx-auto">
             Trusted by families, food lovers, and the local community since day one.
           </p>
         </div>
@@ -45,14 +45,14 @@ const TrustSection = () => {
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="bg-background rounded-lg p-6 md:p-8 border border-border hover:border-primary/30 transition-colors"
+              className="bg-white rounded-lg p-6 md:p-8 border border-navy/10 hover:border-primary/30 transition-colors shadow-sm"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(review.rating)].map((_, j) => (
                   <Star key={j} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-foreground/80 leading-relaxed mb-6 text-sm md:text-base">
+              <p className="text-navy/80 leading-relaxed mb-6 text-sm md:text-base">
                 "{review.text}"
               </p>
               <p className="text-primary font-semibold text-sm">
