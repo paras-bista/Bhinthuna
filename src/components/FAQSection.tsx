@@ -25,7 +25,7 @@ const FAQSection = ({
     <section className="py-12 md:py-16">
       <div className="container max-w-3xl">
         <div className="text-center mb-10">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-black">
             {title}
           </h2>
           <p className="text-muted-foreground">{subtitle}</p>
