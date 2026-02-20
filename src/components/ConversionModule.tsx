@@ -40,7 +40,7 @@ const ConversionModule = ({ className = "", sticky = false }: ConversionModulePr
           variant="outline"
           className="border-2 border-navy/20 font-semibold h-auto py-4 hover:bg-navy/5 hover:border-navy/30"
         >
-          <a href="mailto:info@bhintuna.com.au" className="flex items-center justify-center gap-2">
+          <a href="mailto:admin@bhintunahouse.com.au" className="flex items-center justify-center gap-2">
             <Mail className="w-5 h-5" />
             <span>Send Email</span>
           </a>
