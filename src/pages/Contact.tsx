@@ -79,6 +79,20 @@ const Contact = () => {
           name="keywords"
           content="Contact Bhintuna House, Burmese Restaurant Parramatta, Restaurant Reservations, Catering Inquiry, 14/55 Phillip St Parramatta"
         />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bhintunahouse.com.au/contact" />
+        <meta property="og:title" content="Contact Us - Bhintuna House | Parramatta" />
+        <meta
+          property="og:description"
+          content="Contact us for reservations and catering inquiries. Visit us at 14/55 Phillip St, Parramatta or call 02 8606 4818."
+        />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://bhintunahouse.com.au/contact" />
+        <meta property="twitter:title" content="Contact Us - Bhintuna House" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

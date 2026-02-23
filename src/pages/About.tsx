@@ -52,6 +52,20 @@ const About = () => {
           name="keywords"
           content="Bhintuna House, Burmese Restaurant, Parramatta, Authentic Burmese Cuisine, Family Restaurant, Traditional Recipes"
         />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bhintunahouse.com.au/about" />
+        <meta property="og:title" content="About Us - Bhintuna House | Authentic Burmese Restaurant" />
+        <meta
+          property="og:description"
+          content="Discover our story. Over 20 years of serving authentic Burmese cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
+        />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://bhintunahouse.com.au/about" />
+        <meta property="twitter:title" content="About Us - Bhintuna House" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
