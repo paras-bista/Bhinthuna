@@ -99,8 +99,8 @@ const Index = () => {
           <MenuPreview />
           <CateringTeaser />
           <AboutTeaser />
-          <Testimonials limit={6} />
           <ContactSection />
+          <Testimonials limit={6} />
           <FinalCTA />
         </main>
         <Footer />

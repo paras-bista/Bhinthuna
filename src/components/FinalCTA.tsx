@@ -2,9 +2,9 @@ import { Phone } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-amber-50 via-orange-50 to-cream relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
       {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-transparent to-transparent pointer-events-none" />
       
       <div className="container relative">
         <div className="max-w-3xl mx-auto text-center">
