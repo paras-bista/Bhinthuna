@@ -268,4 +268,9 @@
       animation: none;
     }
   }
+
+  /* Category Grid Slider - Pause on hover */
+  .pause {
+    animation-play-state: paused !important;
+  }
 }

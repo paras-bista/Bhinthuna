@@ -6,7 +6,7 @@ import logo from "@/assets/logo.png";
 const navItems = [
   { label: "Home", href: "/", type: "route" },
   { label: "Menu", href: "/menu", type: "route" },
-  { label: "Catering", href: "#catering", type: "hash" },
+  { label: "Catering", href: "/catering", type: "route" },
   { label: "About", href: "#about", type: "hash" },
   { label: "Contact", href: "#contact", type: "hash" },
 ];
@@ -21,6 +21,11 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -29,7 +34,7 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" onClick={handleNavClick} className="flex items-center gap-2">
           <img src={logo} alt="Bhintuna House" className="h-10 md:h-12 w-auto" />
         </Link>
 
@@ -40,6 +45,7 @@ const Header = () => {
               <Link
                 key={item.label}
                 to={item.href}
+                onClick={handleNavClick}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
               >
                 {item.label}
@@ -48,6 +54,7 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={() => setIsOpen(false)}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
               >
                 {item.label}
@@ -84,7 +91,7 @@ const Header = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleNavClick}
                   className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
                 >
                   {item.label}
