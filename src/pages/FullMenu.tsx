@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -70,10 +71,36 @@ const FullMenu = () => {
   const filteredItems = getFilteredItems();
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="pt-20 md:pt-24">
+    <>
+      <Helmet>
+        <title>Full Menu | Bhintuna House - Authentic Burmese Cuisine in Parramatta</title>
+        <meta
+          name="description"
+          content="View our complete menu of authentic Burmese dishes. Explore traditional curries, tea leaf salad, mohinga, samosas, and more. Veg & non-veg options. Dine-in, takeaway & catering in Parramatta."
+        />
+        <meta
+          name="keywords"
+          content="Burmese menu, Myanmar food menu, Burmese curry menu, tea leaf salad, mohinga, Burmese appetizers, Parramatta restaurant menu"
+        />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bhintunahouse.com.au/menu" />
+        <meta property="og:title" content="Full Menu | Bhintuna House" />
+        <meta
+          property="og:description"
+          content="View our complete menu of authentic Burmese dishes. Traditional curries, tea leaf salad, mohinga, and more."
+        />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://bhintunahouse.com.au/menu" />
+        <meta property="twitter:title" content="Full Menu | Bhintuna House" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Header />
+        
+        <main className="pt-20 md:pt-24">
         {/* Page Header */}
         <section className="bg-navy py-12 md:py-16">
           <div className="container">
@@ -182,6 +209,7 @@ const FullMenu = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
