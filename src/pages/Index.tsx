@@ -1,9 +1,11 @@
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import TrustSection from "@/components/TrustSection";
 import MenuPreview from "@/components/MenuPreview";
 import CateringTeaser from "@/components/CateringTeaser";
+import AboutTeaser from "@/components/AboutTeaser";
+import Testimonials from "@/components/Testimonials";
+import ContactSection from "@/components/ContactSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -96,8 +98,10 @@ const Index = () => {
           <Hero />
           <MenuPreview />
           <CateringTeaser />
+          <AboutTeaser />
+          <Testimonials limit={6} />
+          <ContactSection />
           <FinalCTA />
-          <TrustSection />
         </main>
         <Footer />
       </div>

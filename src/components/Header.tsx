@@ -7,8 +7,8 @@ const navItems = [
   { label: "Home", href: "/", type: "route" },
   { label: "Menu", href: "/menu", type: "route" },
   { label: "Catering", href: "/catering", type: "route" },
-  { label: "About", href: "#about", type: "hash" },
-  { label: "Contact", href: "#contact", type: "hash" },
+  { label: "About", href: "/about", type: "route" },
+  { label: "Contact", href: "/contact", type: "route" },
 ];
 
 const Header = () => {

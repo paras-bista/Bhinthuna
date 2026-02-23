@@ -2,14 +2,14 @@ import { Phone } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="py-20 md:py-28 bg-navy-dark relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-amber-50 via-orange-50 to-cream relative overflow-hidden">
       {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
       
       <div className="container relative">
         <div className="max-w-3xl mx-auto text-center">
           {/* Strong Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-navy">
             Ready to Experience{" "}
             <span className="block text-gold-gradient mt-2">
               Authentic Nepali Cuisine?
@@ -17,7 +17,7 @@ const FinalCTA = () => {
           </h2>
 
           {/* Supporting Text */}
-          <p className="text-foreground/70 text-base md:text-lg leading-relaxed mb-10 md:mb-12 max-w-xl mx-auto">
+          <p className="text-navy/70 text-base md:text-lg leading-relaxed mb-10 md:mb-12 max-w-xl mx-auto">
             Call us today to make a reservation, discuss catering options, or simply
             learn more about our menu and story.
           </p>
@@ -32,7 +32,7 @@ const FinalCTA = () => {
           </a>
 
           {/* Hours / Additional Info */}
-          <p className="text-muted-foreground text-sm mt-8">
+          <p className="text-navy/60 text-sm mt-8">
             Open 7 days a week · Dine-in, Takeaway & Catering Available
           </p>
         </div>
