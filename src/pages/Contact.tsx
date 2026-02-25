@@ -63,8 +63,18 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log("Form submitted:", formData);
+    if (import.meta.env.DEV) {
+      console.log("Form submitted:", formData);
+    }
     alert("Thank you for your inquiry! We'll get back to you soon.");
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
@@ -88,11 +98,14 @@ const Contact = () => {
           property="og:description"
           content="Contact us for reservations and catering inquiries. Visit us at 14/55 Phillip St, Parramatta or call 02 8606 4818."
         />
+        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <link rel="canonical" href="https://bhintunahouse.com.au/contact" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary" />
         <meta property="twitter:url" content="https://bhintunahouse.com.au/contact" />
         <meta property="twitter:title" content="Contact Us - Bhintuna House" />
+        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -105,6 +118,7 @@ const Contact = () => {
               src={contactBg}
               alt="Contact Bhintuna House"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-navy-dark/80" />
           </div>

@@ -1,4 +1,5 @@
 import { Phone, ChefHat, Users, Utensils, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const highlights = [
   {
@@ -54,13 +55,13 @@ const CateringTeaser = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <a
-              href="/catering"
+            <Link
+              to="/catering"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base hover:bg-gold-dark transition-all shadow-lg hover:shadow-xl hover:scale-105"
             >
               View Our Packages
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
             <a
               href="tel:+610286064818"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-lg border-2 border-navy bg-white text-navy font-semibold text-base hover:bg-navy hover:text-white transition-all shadow-md hover:shadow-lg"

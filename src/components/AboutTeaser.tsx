@@ -22,6 +22,7 @@ const AboutTeaser = () => {
                 src={aboutImage}
                 alt="Bhintuna House Restaurant"
                 className="w-full h-[400px] md:h-[500px] object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
             </div>

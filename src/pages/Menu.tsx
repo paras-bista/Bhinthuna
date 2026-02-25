@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConversionModule from "@/components/ConversionModule";
@@ -152,7 +153,36 @@ const Menu = () => {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Menu | Bhintuna House - Authentic Burmese Cuisine in Parramatta</title>
+        <meta
+          name="description"
+          content="Browse our menu of authentic Burmese dishes. Traditional curries, tea leaf salad, mohinga, momo, and noodles. Dine-in, takeaway & catering available in Parramatta."
+        />
+        <meta
+          name="keywords"
+          content="Burmese menu, Myanmar food, Burmese curry, momo, noodles, Parramatta restaurant menu, Nepali food"
+        />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bhintunahouse.com.au/menu" />
+        <meta property="og:title" content="Menu | Bhintuna House - Authentic Burmese Cuisine" />
+        <meta
+          property="og:description"
+          content="Browse our menu of authentic Burmese dishes. Traditional curries, momo, noodles, and more."
+        />
+        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <link rel="canonical" href="https://bhintunahouse.com.au/menu" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://bhintunahouse.com.au/menu" />
+        <meta property="twitter:title" content="Menu | Bhintuna House" />
+        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       <Header />
 
       <main className="pt-20 md:pt-24">
@@ -287,6 +317,7 @@ const Menu = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

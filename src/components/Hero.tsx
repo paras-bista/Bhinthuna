@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroBg}
-          alt="Traditional Nepali cuisine"
+          alt="Authentic Nepali cuisine served at Bhintuna House"
           className="w-full h-full object-cover"
           loading="eager"
         />

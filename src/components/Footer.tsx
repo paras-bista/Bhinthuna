@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand */}
           <div>
-            <img src={logo} alt="Bhintuna House" className="h-14 w-auto mb-4" />
+            <img src={logo} alt="Bhintuna House Logo" className="h-14 w-auto mb-4" />
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Bringing the authentic taste of Nepal to Parramatta. Traditional
               recipes, warm hospitality, and catering for all occasions.
@@ -21,15 +22,21 @@ const Footer = () => {
               Quick Links
             </h3>
             <nav className="flex flex-col gap-3">
-              {["Home", "Menu", "Catering", "About", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-muted-foreground text-sm hover:text-primary transition-colors"
-                >
-                  {item}
-                </a>
-              ))}
+              <Link to="/" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                Home
+              </Link>
+              <Link to="/menu" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                Menu
+              </Link>
+              <Link to="/catering" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                Catering
+              </Link>
+              <Link to="/about" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                About
+              </Link>
+              <Link to="/contact" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                Contact
+              </Link>
             </nav>
           </div>
 

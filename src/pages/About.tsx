@@ -61,11 +61,14 @@ const About = () => {
           property="og:description"
           content="Discover our story. Over 20 years of serving authentic Burmese cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
         />
+        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <link rel="canonical" href="https://bhintunahouse.com.au/about" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://bhintunahouse.com.au/about" />
         <meta property="twitter:title" content="About Us - Bhintuna House" />
+        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -78,6 +81,7 @@ const About = () => {
               src={aboutBg}
               alt="About Bhintuna House"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-navy-dark/80" />
           </div>
@@ -105,6 +109,7 @@ const About = () => {
                   src={aboutBg}
                   alt="Bhintuna House Kitchen"
                   className="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-2xl"
+                  loading="lazy"
                 />
               </div>
 
@@ -201,6 +206,7 @@ const About = () => {
                         src={aboutBg}
                         alt={chef.name}
                         className="w-full h-full object-cover opacity-80"
+                        loading="lazy"
                       />
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="bg-primary text-primary-foreground px-4 py-2 rounded-lg inline-block shadow-lg">

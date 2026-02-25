@@ -35,7 +35,7 @@ const Header = () => {
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" onClick={handleNavClick} className="flex items-center gap-2">
-          <img src={logo} alt="Bhintuna House" className="h-10 md:h-12 w-auto" />
+          <img src={logo} alt="Bhintuna House Logo" className="h-10 md:h-12 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
