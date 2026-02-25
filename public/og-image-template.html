@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhintuna House - OG Image Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+        }
+        
+        .og-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3e50 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+        
+        .og-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .og-logo {
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .og-logo img {
+            max-width: 140px;
+            max-height: 140px;
+        }
+        
+        .og-title {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+        
+        .og-tagline {
+            font-size: 36px;
+            color: #f4a261;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .og-description {
+            font-size: 28px;
+            color: #d4d4d4;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        .og-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 24px;
+            color: #f4a261;
+            font-weight: 600;
+        }
+        
+        .decorative-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.1) 10px, rgba(255,255,255,.1) 20px);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-container">
+        <div class="decorative-pattern"></div>
+        <div class="og-content">
+            <div class="og-logo">
+                <!-- Replace with your actual logo -->
+                <img src="logo.png" alt="Bhintuna House Logo">
+            </div>
+            <h1 class="og-title">Bhintuna House</h1>
+            <p class="og-tagline">Authentic Burmese Cuisine</p>
+            <p class="og-description">
+                Traditional Family Recipes • Fresh Ingredients<br>
+                Dine-in • Takeaway • Catering
+            </p>
+        </div>
+        <div class="og-footer">
+            📍 Parramatta, NSW • 📞 02 8606 4818 • bhintunahouse.com.au
+        </div>
+    </div>
+    
+    <script>
+        // Instructions:
+        // 1. Open this file in Chrome
+        // 2. Press F12 to open DevTools
+        // 3. Press Ctrl+Shift+P and type "Capture full size screenshot"
+        // 4. Save as og-image.jpg (1200x630px)
+        // 5. Replace the temporary og-image.jpg in /public/ folder
+    </script>
+</body>
+</html>

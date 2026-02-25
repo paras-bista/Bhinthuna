@@ -1,9 +1,47 @@
-# Open Graph Image Required
+# Open Graph Image - Create Professional Social Media Preview
 
-## Action Required:
-You need to create and add an Open Graph image for social media sharing.
+## 🎯 Why This Matters
 
-## Image Specifications:
+**Without OG Image (Current):**
+- Plain text preview in WhatsApp/Facebook
+- No visual branding
+- Low engagement
+
+**With OG Image (Goal - Like GoalFest):**
+- Professional branded preview
+- Eye-catching visuals
+- Higher click-through rates
+- Restaurant logo + branding visible
+
+## 📋 Quick Solution (3 Methods)
+
+### Method 1: Use the Template (Fastest - 5 minutes)
+
+1. Open `public/og-image-template.html` in Chrome
+2. Press `F12` (DevTools)
+3. Press `Ctrl+Shift+P`
+4. Type "Capture full size screenshot"
+5. Save as `og-image.jpg`
+6. Replace `/public/og-image.jpg` with your new image
+
+### Method 2: Use Canva (Professional - 15 minutes)
+
+1. Go to https://canva.com
+2. Create design → Custom size → 1200 × 630 px
+3. Add elements:
+   - Background: Dark gradient (like GoalFest)
+   - Upload restaurant logo
+   - Add text: "Bhintuna House"
+   - Add tagline: "Authentic Burmese Cuisine in Parramatta"
+   - Add icons: Phone, location, food items
+4. Download as JPG
+5. Save to `/public/og-image.jpg`
+
+### Method 3: Professional Designer
+
+Hire on Fiverr/Upwork for $10-30 for custom OG image design
+
+## 🎨 Design Specifications
 - **Filename**: `og-image.jpg`
 - **Location**: Place in `/public/` folder
 - **Dimensions**: 1200px × 630px (recommended for Facebook, Twitter, LinkedIn)
