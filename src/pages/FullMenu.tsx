@@ -85,20 +85,20 @@ const FullMenu = () => {
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bhintunahouse.com.au/full-menu" />
+        <meta property="og:url" content="https://bhinthuna.pages.dev/full-menu" />
         <meta property="og:title" content="Full Menu | Bhintuna House" />
         <meta
           property="og:description"
           content="View our complete menu of authentic Burmese dishes. Traditional curries, tea leaf salad, mohinga, and more."
         />
-        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
-        <link rel="canonical" href="https://bhintunahouse.com.au/full-menu" />
+        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
+        <link rel="canonical" href="https://bhinthuna.pages.dev/full-menu" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bhintunahouse.com.au/full-menu" />
+        <meta property="twitter:url" content="https://bhinthuna.pages.dev/full-menu" />
         <meta property="twitter:title" content="Full Menu | Bhintuna House" />
-        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />

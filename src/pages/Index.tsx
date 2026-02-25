@@ -25,23 +25,23 @@ const Index = () => {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="restaurant" />
-        <meta property="og:url" content="https://bhintunahouse.com.au/" />
+        <meta property="og:url" content="https://bhinthuna.pages.dev/" />
         <meta property="og:title" content="Bhintuna House | Authentic Burmese Cuisine in Parramatta" />
         <meta
           property="og:description"
           content="Experience authentic Burmese cuisine in Parramatta. Traditional family recipes, fresh ingredients, warm hospitality. Dine-in, takeaway & catering."
         />
-        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bhintunahouse.com.au/" />
+        <meta property="twitter:url" content="https://bhinthuna.pages.dev/" />
         <meta property="twitter:title" content="Bhintuna House | Authentic Burmese Cuisine" />
         <meta
           property="twitter:description"
           content="Experience authentic Burmese cuisine in Parramatta. Traditional family recipes, fresh ingredients, warm hospitality."
         />
-        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
         
         {/* Local Business Schema */}
         <script type="application/ld+json">

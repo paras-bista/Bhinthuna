@@ -187,20 +187,20 @@ const Catering = () => {
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bhintunahouse.com.au/catering" />
-        <meta property="og:title" content="Catering Services | Bhintuna House - Burmese Food Catering" />
+        <meta property="og:url" content="https://bhinthuna.pages.dev/catering" />
+        <meta property="og:title" content="Catering Services | Bhintuna House - Authentic Burmese Catering" />
         <meta
           property="og:description"
-          content="Professional Burmese food catering for weddings, corporate events, and parties. Custom packages available."
+          content="Professional catering for events, parties, and corporate functions. Authentic Burmese cuisine delivered."
         />
-        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
-        <link rel="canonical" href="https://bhintunahouse.com.au/catering" />
+        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
+        <link rel="canonical" href="https://bhinthuna.pages.dev/catering" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bhintunahouse.com.au/catering" />
+        <meta property="twitter:url" content="https://bhinthuna.pages.dev/catering" />
         <meta property="twitter:title" content="Catering Services | Bhintuna House" />
-        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
       </Helmet>
       <div className="min-h-screen bg-background">
       <Header />

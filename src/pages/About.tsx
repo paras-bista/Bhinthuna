@@ -55,20 +55,20 @@ const About = () => {
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bhintunahouse.com.au/about" />
+        <meta property="og:url" content="https://bhinthuna.pages.dev/about" />
         <meta property="og:title" content="About Us - Bhintuna House | Authentic Burmese Restaurant" />
         <meta
           property="og:description"
           content="Discover our story. Over 20 years of serving authentic Burmese cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
         />
-        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
-        <link rel="canonical" href="https://bhintunahouse.com.au/about" />
+        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
+        <link rel="canonical" href="https://bhinthuna.pages.dev/about" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bhintunahouse.com.au/about" />
+        <meta property="twitter:url" content="https://bhinthuna.pages.dev/about" />
         <meta property="twitter:title" content="About Us - Bhintuna House" />
-        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

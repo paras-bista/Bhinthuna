@@ -92,20 +92,20 @@ const Contact = () => {
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bhintunahouse.com.au/contact" />
+        <meta property="og:url" content="https://bhinthuna.pages.dev/contact" />
         <meta property="og:title" content="Contact Us - Bhintuna House | Parramatta" />
         <meta
           property="og:description"
           content="Contact us for reservations and catering inquiries. Visit us at 14/55 Phillip St, Parramatta or call 02 8606 4818."
         />
-        <meta property="og:image" content="https://bhintunahouse.com.au/og-image.jpg" />
-        <link rel="canonical" href="https://bhintunahouse.com.au/contact" />
+        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
+        <link rel="canonical" href="https://bhinthuna.pages.dev/contact" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://bhintunahouse.com.au/contact" />
+        <meta property="twitter:url" content="https://bhinthuna.pages.dev/contact" />
         <meta property="twitter:title" content="Contact Us - Bhintuna House" />
-        <meta property="twitter:image" content="https://bhintunahouse.com.au/og-image.jpg" />
+        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
