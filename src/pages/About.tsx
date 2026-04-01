@@ -8,34 +8,34 @@ import aboutBg from "@/assets/hero-bg.jpg";
 const credibilityPoints = [
   { icon: Award, text: "Over 20 Years of Experience" },
   { icon: UtensilsCrossed, text: "Fresh, High-Quality Ingredients" },
-  { icon: Heart, text: "Traditional Burmese Family Recipes" },
+  { icon: Heart, text: "Traditional Nepali Family Recipes" },
   { icon: Check, text: "Family-Owned & Operated" },
 ];
 
 const chefs = [
   {
     id: 1,
-    name: "Chef Maung Maung",
+    name: "Chef Ramesh Shrestha",
     role: "Head Chef & Co-Founder",
     experience: "25+ Years of Culinary Mastery",
-    philosophy: "Every dish must tell the story of Burma—its people, its heritage, its soul.",
-    bio: "Born in Yangon, Chef Maung has dedicated his life to preserving and sharing authentic Burmese cuisine. Trained under his grandmother's guidance, he brings generations of family recipes to every plate.",
+    philosophy: "Every dish should carry the warmth of a Nepali home and the spirit of the Himalayas.",
+    bio: "Born in Kathmandu and raised in a family of home cooks, Chef Ramesh has spent decades preserving authentic Nepali recipes. From momo folding techniques to slow-cooked curry bases, he brings generational flavor to every plate.",
   },
   {
     id: 2,
-    name: "Chef Thin Thin Aye",
-    role: "Head Pastry & Specialty Chef",
-    experience: "18+ Years in Traditional Burmese Cuisine",
+    name: "Chef Sita Gurung",
+    role: "Head Thakali & Specialty Chef",
+    experience: "18+ Years in Traditional Nepali Cuisine",
     philosophy: "Cooking is an act of love. When you taste my food, you taste my heart.",
-    bio: "Specializing in traditional desserts and tea leaf salad, Chef Thin Thin combines time-honored techniques with the finest local ingredients to create unforgettable flavors.",
+    bio: "Specializing in Thakali sets, achar, and regional festival dishes, Chef Sita combines time-honored Himalayan techniques with the finest local ingredients to create deeply comforting flavors.",
   },
   {
     id: 3,
-    name: "Chef Kyaw Zin",
+    name: "Chef Bikash Tamang",
     role: "Executive Sous Chef",
     experience: "15+ Years Culinary Excellence",
     philosophy: "Balance is everything—flavor, texture, aroma. Perfection comes from harmony.",
-    bio: "A master of curry preparations and spice blending, Chef Kyaw ensures every dish meets the highest standards of authenticity and taste.",
+    bio: "A master of momo stations, tandoor timing, and spice balancing, Chef Bikash ensures every dish meets Bhintuna House's highest standards of authenticity and consistency.",
   },
 ];
 
@@ -43,23 +43,23 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us - Bhintuna House | Authentic Burmese Restaurant in Parramatta</title>
+        <title>About Us - Bhintuna House | Authentic Nepali Restaurant in Parramatta</title>
         <meta
           name="description"
-          content="Discover Bhintuna House's story. Over 20 years of serving authentic Burmese cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
+          content="Discover Bhintuna House's story. Over 20 years of serving authentic Nepali cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
         />
         <meta
           name="keywords"
-          content="Bhintuna House, Burmese Restaurant, Parramatta, Authentic Burmese Cuisine, Family Restaurant, Traditional Recipes"
+          content="Bhintuna House, Nepali Restaurant, Parramatta, Authentic Nepali Cuisine, Family Restaurant, Traditional Recipes"
         />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bhinthuna.pages.dev/about" />
-        <meta property="og:title" content="About Us - Bhintuna House | Authentic Burmese Restaurant" />
+        <meta property="og:title" content="About Us - Bhintuna House | Authentic Nepali Restaurant" />
         <meta
           property="og:description"
-          content="Discover our story. Over 20 years of serving authentic Burmese cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
+          content="Discover our story. Over 20 years of serving authentic Nepali cuisine in Parramatta. Family-owned, traditional recipes, and warm hospitality."
         />
         <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
         <link rel="canonical" href="https://bhinthuna.pages.dev/about" />
@@ -87,49 +87,49 @@ const About = () => {
           </div>
 
           <div className="relative container text-center">
-            <nav className="flex items-center justify-center gap-2 text-sm text-cream/60 mb-6">
-              <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-              <span>/</span>
-              <span className="text-cream">About Us</span>
-            </nav>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-cream">
               About Us
             </h1>
+            <p className="text-cream/85 text-base md:text-lg max-w-2xl mx-auto mt-4">
+              Our story, our people, and the traditions that shape every dish we serve.
+            </p>
           </div>
         </section>
 
         {/* Restaurant Story Section - Clean White */}
         <section className="py-16 md:py-24 bg-white">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-stretch max-w-6xl mx-auto">
               {/* Image */}
-              <div className="relative">
-                <div className="absolute top-8 left-8 w-full h-full border-4 border-primary/20 rounded-2xl -z-10" />
-                <img
-                  src={aboutBg}
-                  alt="Bhintuna House Kitchen"
-                  className="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-2xl"
-                  loading="lazy"
-                />
+              <div className="relative h-full">
+                <div className="absolute top-6 left-6 w-full h-full border-4 border-primary/20 rounded-2xl -z-10" />
+                <div className="rounded-2xl overflow-hidden shadow-2xl h-full min-h-[360px] md:min-h-[460px]">
+                  <img
+                    src={aboutBg}
+                    alt="Bhintuna House Kitchen"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </div>
 
               {/* Content */}
-              <div>
+              <div className="h-full flex flex-col justify-center">
                 <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-4">
                   About Bhintuna
                 </p>
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-navy">
-                  The Cleanest, Most Delicious{" "}
-                  <span className="text-gold-gradient">Burmese Cuisine</span> Ever
+                  A Legacy of{" "}
+                  <span className="text-gold-gradient">Authentic Nepali Cuisine</span>
                 </h2>
-                <p className="text-navy/70 text-base md:text-lg leading-relaxed mb-6">
-                  Bhintuna House was born from a simple dream: to share the authentic flavors of Burma with the vibrant community of Parramatta. For over 20 years, our family has been serving dishes crafted from generations-old recipes, using only the freshest, highest-quality ingredients.
+                <p className="text-navy/80 text-base md:text-lg leading-relaxed mb-6">
+                  Bhintuna House was born from a simple dream: to share the authentic flavors of Nepal with the vibrant community of Parramatta. For over 20 years, our family has served dishes crafted from generations-old recipes, using only the freshest, highest-quality ingredients.
                 </p>
-                <p className="text-navy/70 text-base md:text-lg leading-relaxed mb-6">
-                  Every curry, every salad, every bowl of mohinga is prepared with the same care and tradition as it would be in a Burmese home. We believe food is more than sustenance—it's a connection to heritage, a celebration of culture, and an expression of love.
+                <p className="text-navy/80 text-base md:text-lg leading-relaxed mb-6">
+                  Every plate tells a story, from hand-folded momo and comforting dal bhat to smoky choila and house-made achar. We believe food is more than sustenance-it is a connection to heritage, a celebration of culture, and an expression of love.
                 </p>
-                <p className="text-navy/70 text-base md:text-lg leading-relaxed mb-8">
-                  From intimate family dinners to grand celebrations, we welcome you with open arms and warm hospitality. Whether you're dining in, taking away, or hosting a catered event, Bhintuna House promises an unforgettable culinary journey.
+                <p className="text-navy/80 text-base md:text-lg leading-relaxed mb-8">
+                  From intimate family dinners to grand celebrations, we welcome you with open arms and warm hospitality. Whether you are dining in, taking away, or hosting a catered event, Bhintuna House promises an unforgettable Nepali culinary journey.
                 </p>
 
                 {/* Credibility Points */}
@@ -188,8 +188,8 @@ const About = () => {
                   Meet Our Exclusive &{" "}
                   <span className="text-gold-gradient">Master Chefs</span>
                 </h2>
-                <p className="text-navy/70 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                  Behind every exceptional dish is a passionate chef dedicated to culinary excellence. Meet the masters who bring Burma to your table.
+                <p className="text-navy/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                  Behind every exceptional dish is a passionate chef dedicated to culinary excellence. Meet the team bringing Nepal's rich food heritage to your table.
                 </p>
               </div>
 
@@ -219,11 +219,11 @@ const About = () => {
                     <div className="p-6">
                       <h3 className="font-heading text-xl font-bold mb-1 text-navy">{chef.name}</h3>
                       <p className="text-primary text-sm font-semibold mb-4">{chef.role}</p>
-                      <p className="text-navy/70 text-sm leading-relaxed mb-4">
+                      <p className="text-navy/80 text-sm leading-relaxed mb-4">
                         {chef.bio}
                       </p>
                       <div className="pt-4 border-t-2 border-primary/10">
-                        <p className="text-xs text-navy/60 italic">
+                        <p className="text-xs text-navy/70 italic">
                           "{chef.philosophy}"
                         </p>
                       </div>
@@ -235,14 +235,14 @@ const About = () => {
           </div>
         </section>
 
-        {/* Final CTA Section - Warm Vibrant */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600 relative overflow-hidden">
+        {/* Final CTA Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-navy via-navy-dark to-slate-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20" />
           <div className="container relative">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white drop-shadow-lg">
                 Ready to Experience{" "}
-                <span className="text-white">Authentic Burma?</span>
+                <span className="text-white">Authentic Nepal?</span>
               </h2>
               <p className="text-white/95 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto font-medium drop-shadow">
                 Join our family at Bhintuna House for an unforgettable dining experience. Book your table, place an order for takeaway, or inquire about catering for your next event.

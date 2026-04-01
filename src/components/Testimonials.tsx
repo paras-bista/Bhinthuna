@@ -1,5 +1,7 @@
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 interface Testimonial {
   id: number;
@@ -87,6 +89,19 @@ interface TestimonialsProps {
   className?: string;
 }
 
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
   const [isPaused, setIsPaused] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -112,7 +127,8 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
   };
   
   return (
-    <section className={`py-10 md:py-28 bg-gradient-to-br from-cream via-amber-50 to-orange-50 overflow-hidden ${className}`}>
+    <AnimateOnScroll>
+      <section className={`py-14 md:py-24 bg-gradient-to-br from-cream via-amber-50 to-orange-50 overflow-hidden ${className}`}>
       <div className="container px-2 md:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Heading */}
@@ -123,7 +139,14 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
             <h2 className="font-heading text-xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 text-navy leading-tight px-2">
               What Our Guests Say
             </h2>
-            <p className="text-navy/70 text-sm md:text-xl leading-snug md:leading-relaxed max-w-3xl mx-auto font-normal md:font-medium px-4">
+            <motion.span
+              className="block h-0.5 w-28 bg-primary mx-auto mb-4 md:mb-6"
+              initial={{ scaleX: 0, transformOrigin: "left" }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            />
+            <p className="text-navy/80 text-sm md:text-xl leading-snug md:leading-relaxed max-w-3xl mx-auto font-normal md:font-medium px-4">
               Trusted by locals and loved by visitors. Read what our community has to say about their experience.
             </p>
           </div>
@@ -176,11 +199,18 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
               className="overflow-hidden"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              <div className={`flex gap-4 md:gap-8 animate-slide ${isPaused ? 'paused' : ''}`}>
+              <motion.div
+                className={`flex gap-4 md:gap-8 animate-slide ${isPaused ? 'paused' : ''}`}
+                variants={cardContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+              >
                 {duplicatedTestimonials.map((testimonial, index) => (
-                  <div
+                  <motion.div
                     key={`${testimonial.id}-${index}`}
                     className="flex-shrink-0 w-[240px] md:w-[420px] bg-white border border-primary/20 md:border-2 rounded-lg md:rounded-2xl p-3 md:p-8 hover:shadow-2xl hover:border-primary hover:scale-[1.02] transition-all duration-300 shadow-md md:shadow-lg"
+                    variants={cardVariants}
                   >
                     {/* Rating */}
                     <div className="flex gap-0.5 md:gap-1.5 mb-2 md:mb-5">
@@ -198,7 +228,7 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
                     <div className="flex items-center justify-between pt-2 md:pt-5 border-t border-primary/15 md:border-t-2">
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-navy text-xs md:text-lg truncate">{testimonial.name}</p>
-                        <p className="text-[10px] md:text-sm text-navy/60 font-medium mt-0.5 md:mt-1">{testimonial.date}</p>
+                        <p className="text-[10px] md:text-sm text-navy/70 font-medium mt-0.5 md:mt-1">{testimonial.date}</p>
                       </div>
                       <div className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-gold-dark flex items-center justify-center shadow-md flex-shrink-0 ml-2">
                         <span className="text-white font-bold text-sm md:text-xl">
@@ -206,9 +236,9 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             {/* Fade edges for visual effect */}
@@ -217,7 +247,8 @@ const Testimonials = ({ limit, className = "" }: TestimonialsProps) => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </AnimateOnScroll>
   );
 };
 

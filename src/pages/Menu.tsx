@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { AnimatePresence, motion } from "framer-motion";
+import { Drumstick, Leaf } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConversionModule from "@/components/ConversionModule";
 
-// Menu data structure
 interface MenuItem {
   name: string;
   description: string;
@@ -58,40 +59,49 @@ const menuData = {
 const categories = [
   { id: "all", label: "All Items" },
   { id: "starters", label: "Chow & Chat" },
-  { id: "momo", label: "Chef's Specials" },
-  { id: "noodles", label: "Noodles" },
+  { id: "momo", label: "Momo" },
+  { id: "noodles", label: "Chowmin & Thukpa" },
 ];
 
-// Food Card Component
-const FoodCard = ({ item }: { item: MenuItem }) => (
-  <div className="group">
-    <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-border h-full">
-      <div className="aspect-[4/3] overflow-hidden relative">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-2 right-2 bg-primary text-primary-foreground px-3 py-1 rounded-full font-bold text-sm shadow-lg">
-          {item.price}
+const FoodCard = ({ item }: { item: MenuItem }) => {
+  const isVeg = /(\(veg\)|\bveg\b|vegetable|plain)/i.test(item.name);
+
+  return (
+    <div className="group">
+      <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 h-full">
+        <div className="aspect-square overflow-hidden relative">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-white/95 text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200">
+            {isVeg ? <Leaf className="w-3.5 h-3.5 text-green-600" /> : <Drumstick className="w-3.5 h-3.5 text-red-600" />}
+            <span className={isVeg ? "text-green-700" : "text-red-700"}>{isVeg ? "Veg" : "Non-Veg"}</span>
+          </div>
+
+        </div>
+
+        <div className="p-4">
+          <div className="flex items-start justify-between gap-3 mb-1.5">
+            <h4 className="font-heading text-lg font-semibold text-navy group-hover:text-primary transition-colors leading-tight">
+              {item.name}
+            </h4>
+            <span className="text-primary font-bold text-base whitespace-nowrap">{item.price}</span>
+          </div>
+          <p className="text-navy/70 text-sm line-clamp-2">{item.description}</p>
         </div>
       </div>
-      <div className="p-4">
-        <h4 className="font-heading text-lg font-semibold mb-1 text-foreground group-hover:text-primary transition-colors">
-          {item.name}
-        </h4>
-        <p className="text-muted-foreground text-sm line-clamp-2">{item.description}</p>
-      </div>
     </div>
-  </div>
-);
+  );
+};
 
-// Static Grid Component - 4 items per row
 const StaticGrid = ({ items }: { items: MenuItem[] }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4">
       {items.map((item, index) => (
         <FoodCard key={`${item.name}-${index}`} item={item} />
       ))}
@@ -99,14 +109,11 @@ const StaticGrid = ({ items }: { items: MenuItem[] }) => {
   );
 };
 
-// Category Section Component for "All Items" view
 const CategorySection = ({ title, items }: { title: string; items: MenuItem[] }) => (
   <div className="mb-16">
     <div className="flex items-center gap-3 mb-6">
       <div className="w-1 h-8 bg-primary rounded-full"></div>
-      <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy">
-        {title}
-      </h3>
+      <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy">{title}</h3>
       <div className="flex-1 h-px bg-border ml-4"></div>
     </div>
     <StaticGrid items={items} />
@@ -127,196 +134,123 @@ const Menu = () => {
 
   const filteredItems = getFilteredItems();
 
-  // Scroll to menu section when category changes (but not on first render)
   useEffect(() => {
-    // Skip scroll on initial render
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
 
     if (menuSectionRef.current) {
-      // Get the sticky header height (64px on mobile, 80px on desktop)
       const headerHeight = window.innerWidth >= 768 ? 80 : 64;
-      // Add additional offset for the category tabs (approximately 72px)
       const tabsHeight = 72;
       const offset = headerHeight + tabsHeight;
-      
+
       const elementPosition = menuSectionRef.current.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   }, [activeCategory]);
 
   return (
     <>
       <Helmet>
-        <title>Menu | Bhintuna House - Authentic Burmese Cuisine in Parramatta</title>
+        <title>Menu | Bhintuna House - Authentic Nepali Cuisine in Parramatta</title>
         <meta
           name="description"
-          content="Browse our menu of authentic Burmese dishes. Traditional curries, tea leaf salad, mohinga, momo, and noodles. Dine-in, takeaway & catering available in Parramatta."
+          content="Browse our menu of authentic Nepali dishes. Traditional curries, momo, chowmin and thukpa. Dine-in, takeaway & catering available in Parramatta."
         />
         <meta
           name="keywords"
-          content="Burmese menu, Myanmar food, Burmese curry, momo, noodles, Parramatta restaurant menu, Nepali food"
+          content="Nepali menu, momo, chowmin, thukpa, Parramatta restaurant menu"
         />
-        
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bhinthuna.pages.dev/menu" />
-        <meta property="og:title" content="Menu | Bhintuna House - Authentic Burmese Cuisine" />
-        <meta
-          property="og:description"
-          content="Browse our menu of authentic Burmese dishes. Traditional curries, momo, noodles, and more."
-        />
-        <meta property="og:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
-        <link rel="canonical" href="https://bhinthuna.pages.dev/menu" />
-        
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bhinthuna.pages.dev/menu" />
-        <meta property="twitter:title" content="Menu | Bhintuna House" />
-        <meta property="twitter:image" content="https://bhinthuna.pages.dev/og-image.jpg" />
       </Helmet>
+
       <div className="min-h-screen bg-background">
-      <Header />
+        <Header />
 
-      <main className="pt-20 md:pt-24">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-navy via-navy-dark to-navy py-12 md:py-16 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&h=1080&fit=crop&q=80')] bg-cover bg-center opacity-10" />
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
-                COMPLETE MENU
-              </p>
-              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-                Our Full Menu
-              </h1>
-              <p className="text-white/90 text-base md:text-lg max-w-2xl mx-auto">
-                Explore our complete selection of authentic Nepali dishes, crafted with love and tradition.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Category Tabs */}
-        <section className="bg-card border-b border-border sticky top-16 md:top-20 z-40 shadow-sm">
-          <div className="container">
-            <div className="overflow-x-auto scrollbar-hide">
-              <div className="flex gap-2 min-w-max py-4">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveCategory(category.id)}
-                    type="button"
-                    className={`px-6 py-2.5 rounded-full font-semibold text-sm md:text-base whitespace-nowrap transition-all ${
-                      activeCategory === category.id
-                        ? "bg-primary text-primary-foreground shadow-lg"
-                        : "bg-muted text-foreground/70 hover:text-primary hover:bg-muted/80"
-                    }`}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Static Grid Menu Items */}
-        <section ref={menuSectionRef} className="py-12 md:py-16 bg-white">
-          <div className="container">
-            {activeCategory === "all" && (
-              // Show all categories with headers and static grid
-              <div>
-                <CategorySection 
-                  title="Chow & Chat" 
-                  items={menuData.starters} 
-                />
-                <CategorySection 
-                  title="Chef's Specials" 
-                  items={menuData.momo} 
-                />
-                <CategorySection 
-                  title="Noodles" 
-                  items={menuData.noodles} 
-                />
-              </div>
-            )}
-            
-            {activeCategory !== "all" && filteredItems.length > 0 && (
-              <StaticGrid items={filteredItems} />
-            )}
-            
-            {activeCategory !== "all" && filteredItems.length === 0 && (
-              <div className="text-center py-16">
-                <p className="text-muted-foreground text-lg">No items found in this category.</p>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Conversion Module */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-red-50 via-rose-50 to-pink-50">
-          <div className="container max-w-4xl">
-            <ConversionModule />
-          </div>
-        </section>
-
-        {/* Why Choose Us Section */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border-y border-amber-100">
-          <div className="container">
-            <div className="text-center mb-10">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-navy">
-                Why Choose Us?
-              </h2>
-              <p className="text-navy/70 max-w-2xl mx-auto">
-                We pride ourselves on delivering exceptional quality and taste in every dish
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🍴</span>
-                </div>
-                <h3 className="font-heading text-xl font-semibold mb-2 text-navy">Fresh Ingredients</h3>
-                <p className="text-navy/70 text-sm">
-                  We use only the freshest, high-quality ingredients in all our dishes
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">👨‍🍳</span>
-                </div>
-                <h3 className="font-heading text-xl font-semibold mb-2 text-navy">Expert Chefs</h3>
-                <p className="text-navy/70 text-sm">
-                  Our experienced chefs bring authentic flavors from around the world
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">⚡</span>
-                </div>
-                <h3 className="font-heading text-xl font-semibold mb-2 text-navy">Fast Service</h3>
-                <p className="text-navy/70 text-sm">
-                  Quick preparation and delivery without compromising on quality
+        <main className="pt-20 md:pt-24">
+          <section className="relative bg-gradient-to-br from-navy via-navy-dark to-navy py-12 md:py-16 overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&h=1080&fit=crop&q=80')] bg-cover bg-center opacity-10" />
+            <div className="container relative z-10">
+              <div className="max-w-3xl mx-auto text-center">
+                <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">COMPLETE MENU</p>
+                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Our Full Menu</h1>
+                <p className="text-white/90 text-base md:text-lg max-w-2xl mx-auto">
+                  Explore our complete selection of authentic Nepali dishes, crafted with love and tradition.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
 
-      <Footer />
-    </div>
+          <section className="bg-card border-b border-border sticky top-16 md:top-20 z-40 shadow-sm">
+            <div className="container">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex md:justify-center">
+                  <div className="inline-flex gap-2 min-w-max py-4">
+                    {categories.map((category) => (
+                      <motion.button
+                        key={category.id}
+                        onClick={() => setActiveCategory(category.id)}
+                        type="button"
+                        className={`relative px-6 py-2.5 rounded-full font-semibold text-sm md:text-base whitespace-nowrap transition-colors ${
+                          activeCategory === category.id ? "text-primary" : "text-foreground/70 hover:text-primary"
+                        }`}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {activeCategory === category.id && (
+                          <motion.span
+                            layoutId="active-menu-tab"
+                            className="absolute inset-0 rounded-full bg-primary/12 border border-primary/35"
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                          />
+                        )}
+                        <span className="relative z-10">{category.label}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section ref={menuSectionRef} className="py-12 md:py-16 bg-white">
+            <div className="container">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.32, ease: "easeOut" }}
+                >
+                  {activeCategory === "all" ? (
+                    <div>
+                      <CategorySection title="Chow & Chat" items={menuData.starters} />
+                      <CategorySection title="Momo" items={menuData.momo} />
+                      <CategorySection title="Chowmin & Thukpa" items={menuData.noodles} />
+                    </div>
+                  ) : filteredItems.length > 0 ? (
+                    <StaticGrid items={filteredItems} />
+                  ) : (
+                    <div className="text-center py-16">
+                      <p className="text-muted-foreground text-lg">No items found in this category.</p>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </section>
+
+          <section className="py-12 md:py-16 bg-gradient-to-br from-red-50 via-rose-50 to-pink-50">
+            <div className="container max-w-4xl">
+              <ConversionModule />
+            </div>
+          </section>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 };

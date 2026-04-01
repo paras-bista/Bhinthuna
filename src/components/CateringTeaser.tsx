@@ -1,5 +1,7 @@
 import { Phone, ChefHat, Users, Utensils, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const highlights = [
   {
@@ -16,9 +18,23 @@ const highlights = [
   },
 ];
 
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 const CateringTeaser = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50" id="catering">
+    <AnimateOnScroll>
+      <section className="py-16 md:py-24 bg-gradient-to-br from-amber-50 via-orange-50 to-cream" id="catering">
       <div className="container">
         <div className="max-w-5xl mx-auto">
           {/* Heading */}
@@ -29,7 +45,14 @@ const CateringTeaser = () => {
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-navy">
               Celebrate with Authentic Flavours
             </h2>
-            <p className="text-navy/70 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            <motion.span
+              className="block h-0.5 w-28 bg-primary mx-auto mb-6"
+              initial={{ scaleX: 0, transformOrigin: "left" }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            />
+            <p className="text-navy/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
               Bring the warmth of Nepali hospitality to your next event. Whether it's
               an intimate gathering or a grand celebration, we create memorable dining
               experiences tailored to your needs.
@@ -37,11 +60,18 @@ const CateringTeaser = () => {
           </div>
 
           {/* Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 md:mb-16">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 md:mb-16"
+            variants={cardContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
             {highlights.map((item) => (
-              <div
+              <motion.div
                 key={item.text}
                 className="flex flex-col items-center text-center p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-navy/10 shadow-sm hover:shadow-md transition-shadow"
+                variants={cardVariants}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/15 flex items-center justify-center mb-4">
                   <item.icon className="w-7 h-7 text-primary" />
@@ -49,9 +79,9 @@ const CateringTeaser = () => {
                 <p className="text-navy/80 text-sm md:text-base leading-relaxed font-medium">
                   {item.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -72,7 +102,8 @@ const CateringTeaser = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </AnimateOnScroll>
   );
 };
 

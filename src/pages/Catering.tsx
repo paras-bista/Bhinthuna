@@ -2,11 +2,12 @@ import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConversionModule from "@/components/ConversionModule";
-import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Clock, Utensils, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 // Catering Package Data
 interface CateringPackage {
@@ -127,49 +128,18 @@ const cateringPackages: CateringPackage[] = [
   },
 ];
 
-// FAQ Data
-const cateringFAQs = [
-  {
-    question: "How far in advance should I book catering?",
-    answer:
-      "We recommend booking at least 2-3 weeks in advance for standard orders. For large events (100+ guests) or during peak seasons, please book 4-6 weeks ahead to ensure availability.",
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
-  {
-    question: "What is the minimum order quantity?",
-    answer:
-      "Our minimum order is 10 people for custom packages and 20 people for our standard packages. This ensures we can deliver the quality and freshness our customers expect.",
-  },
-  {
-    question: "Do you accommodate dietary restrictions?",
-    answer:
-      "Yes! We cater to various dietary requirements including vegetarian, vegan, gluten-free, and halal options. Please inform us of any allergies or restrictions when placing your order.",
-  },
-  {
-    question: "What areas do you deliver to?",
-    answer:
-      "We deliver throughout Sydney and surrounding suburbs. Delivery fees may apply based on distance. Contact us for specific location availability and delivery charges.",
-  },
-  {
-    question: "Can I customize the menu?",
-    answer:
-      "Absolutely! We encourage customization to make your event special. You can mix and match dishes from different packages or create a completely custom menu. Our team will work with you to design the perfect menu.",
-  },
-  {
-    question: "What is your cancellation policy?",
-    answer:
-      "Cancellations made 7+ days before the event receive a full refund. Cancellations 3-7 days prior receive a 50% refund. Unfortunately, we cannot provide refunds for cancellations within 48 hours of the event.",
-  },
-  {
-    question: "Do you provide serving staff?",
-    answer:
-      "Yes, our Standard and Premium packages include professional serving staff. Basic packages can add service staff for an additional fee. All staff are trained and experienced.",
-  },
-  {
-    question: "What equipment do you provide?",
-    answer:
-      "We provide all necessary serving equipment, chafing dishes, and cutlery based on your package selection. Premium packages include high-quality dinnerware and decorative setups.",
-  },
-];
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Catering = () => {
   return (
@@ -207,7 +177,8 @@ const Catering = () => {
 
       <main className="pt-20 md:pt-24">
         {/* Hero Section */}
-        <section className="relative bg-navy py-16 md:py-24 overflow-hidden">
+        <AnimateOnScroll>
+        <section className="relative bg-navy py-12 md:py-16 overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&h=1080&fit=crop&q=80')] bg-cover bg-center opacity-10" />
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto text-center">
@@ -224,33 +195,11 @@ const Catering = () => {
             </div>
           </div>
         </section>
-
-        {/* Stats Section */}
-        <section className="py-12 bg-card border-b border-border">
-          <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
-                <div className="text-sm text-muted-foreground">Events Catered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm text-muted-foreground">Menu Items</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">10+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-                <div className="text-sm text-muted-foreground">Happy Clients</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        </AnimateOnScroll>
 
         {/* Catering Packages */}
-        <section className="py-16 md:py-20 bg-cream/30">
+        <AnimateOnScroll>
+        <section className="py-9 md:py-12 bg-cream/30">
           <div className="container">
             <div className="text-center mb-12">
               <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
@@ -259,26 +208,43 @@ const Catering = () => {
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
                 Our Catering Packages
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <motion.span
+                className="block h-0.5 w-28 bg-primary mx-auto mb-4"
+                initial={{ scaleX: 0, transformOrigin: "left" }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+              <p className="text-navy/80 max-w-2xl mx-auto">
                 Choose from our carefully curated packages or create a custom menu tailored to your needs
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={cardContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+            >
               {cateringPackages.map((pkg) => (
+                <motion.div key={pkg.id} variants={cardVariants} transition={{ duration: 0.5, ease: "easeOut" }}>
                 <Card
-                  key={pkg.id}
-                  className={`overflow-hidden group hover:shadow-xl transition-all duration-300 ${
+                  className={`overflow-hidden group bg-white text-navy border border-primary/15 hover:shadow-xl transition-all duration-300 ${
                     pkg.featured ? "ring-2 ring-primary" : ""
                   }`}
                 >
                   {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
+                    <motion.img
                       src={pkg.image}
                       alt={pkg.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
                     {pkg.featured && (
@@ -301,7 +267,7 @@ const Catering = () => {
                   </div>
 
                   <CardContent className="p-6">
-                    <p className="text-muted-foreground mb-4">{pkg.description}</p>
+                    <p className="text-navy/80 mb-4">{pkg.description}</p>
 
                     {/* Price */}
                     <div className="bg-primary/10 rounded-lg p-4 mb-4 text-center">
@@ -330,19 +296,29 @@ const Catering = () => {
                     </Button>
                   </CardContent>
                 </Card>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
+        </AnimateOnScroll>
 
         {/* Why Choose Our Catering */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-rose-50 via-pink-50 to-red-50">
+        <AnimateOnScroll>
+        <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-cream">
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-navy">
                 Why Choose Our Catering?
               </h2>
-              <p className="text-navy/70 max-w-2xl mx-auto">
+              <motion.span
+                className="block h-0.5 w-28 bg-primary mx-auto mb-4"
+                initial={{ scaleX: 0, transformOrigin: "left" }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+              <p className="text-navy/80 max-w-2xl mx-auto">
                 We go above and beyond to make your event exceptional
               </p>
             </div>
@@ -353,7 +329,7 @@ const Catering = () => {
                   <Utensils className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-heading text-xl font-semibold mb-3 text-navy">Authentic Flavors</h3>
-                <p className="text-navy/70 text-sm">
+                <p className="text-navy/80 text-sm">
                   Traditional recipes prepared with premium ingredients and expert techniques
                 </p>
               </div>
@@ -363,7 +339,7 @@ const Catering = () => {
                   <Users className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-heading text-xl font-semibold mb-3 text-navy">Professional Service</h3>
-                <p className="text-navy/70 text-sm">
+                <p className="text-navy/80 text-sm">
                   Experienced staff ensuring seamless service from setup to cleanup
                 </p>
               </div>
@@ -373,33 +349,38 @@ const Catering = () => {
                   <Clock className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-heading text-xl font-semibold mb-3 text-navy">Timely Delivery</h3>
-                <p className="text-navy/70 text-sm">
+                <p className="text-navy/80 text-sm">
                   Punctual service with hot, fresh food delivered at the perfect time
                 </p>
               </div>
             </div>
           </div>
         </section>
+        </AnimateOnScroll>
 
         {/* Conversion Module */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50" id="inquiry-form">
+        <AnimateOnScroll>
+        <section className="py-10 md:py-14 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50" id="inquiry-form">
           <div className="container max-w-4xl">
             <div className="text-center mb-8">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-navy">
                 Ready to Book Your Event?
               </h2>
-              <p className="text-navy/70">
+              <motion.span
+                className="block h-0.5 w-28 bg-primary mx-auto mb-4"
+                initial={{ scaleX: 0, transformOrigin: "left" }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+              <p className="text-navy/80">
                 Get in touch with us to discuss your catering needs and receive a custom quote
               </p>
             </div>
             <ConversionModule />
           </div>
         </section>
-
-        {/* FAQ Section */}
-        <div className="bg-gradient-to-br from-teal-50 via-cyan-50 to-sky-50">
-          <FAQSection faqs={cateringFAQs} />
-        </div>
+        </AnimateOnScroll>
       </main>
 
       <Footer />

@@ -1,109 +1,99 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Music2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-navy-dark border-t border-border py-12 md:py-16">
+    <footer className="bg-blue-950 text-neutral-100 border-t border-blue-900 py-12 md:py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-          {/* Brand */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
           <div>
             <img src={logo} alt="Bhintuna House Logo" className="h-14 w-auto mb-4" />
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Bringing the authentic taste of Nepal to Parramatta. Traditional
-              recipes, warm hospitality, and catering for all occasions.
+            <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
+              Bhintuna House is a family-run Nepali restaurant in Parramatta serving
+              warm hospitality, traditional recipes, and memorable dining experiences.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="font-heading text-lg font-semibold text-foreground mb-4">
-              Quick Links
-            </h3>
+            <h3 className="font-heading text-lg font-semibold text-neutral-100 mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-3">
-              <Link to="/" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link to="/menu" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+              <Link to="/menu" className="text-neutral-400 text-sm hover:text-primary transition-colors">
                 Menu
               </Link>
-              <Link to="/catering" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Catering
-              </Link>
-              <Link to="/about" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                About
-              </Link>
-              <Link to="/contact" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+              <a href="/#faq" className="text-neutral-400 text-sm hover:text-primary transition-colors">
+                FAQ
+              </a>
+              <Link to="/contact" className="text-neutral-400 text-sm hover:text-primary transition-colors">
                 Contact
               </Link>
             </nav>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="font-heading text-lg font-semibold text-foreground mb-4">
-              Get In Touch
-            </h3>
+            <h3 className="font-heading text-lg font-semibold text-neutral-100 mb-4">Contact Info</h3>
             <div className="flex flex-col gap-4">
               <a
+                href="https://maps.google.com/?q=14/55+Phillip+St+Parramatta+NSW+2150"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-neutral-400 text-sm hover:text-primary transition-colors"
+              >
+                <MapPin className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                14/55 Phillip St, Parramatta NSW 2150
+              </a>
+              <a
                 href="tel:+610286064818"
-                className="flex items-start gap-3 text-muted-foreground text-sm hover:text-primary transition-colors"
+                className="flex items-start gap-3 text-neutral-400 text-sm hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4 mt-0.5 text-primary shrink-0" />
                 +61 02 8606 4818
               </a>
               <a
                 href="mailto:admin@bhintunahouse.com.au"
-                className="flex items-start gap-3 text-muted-foreground text-sm hover:text-primary transition-colors"
+                className="flex items-start gap-3 text-neutral-400 text-sm hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4 mt-0.5 text-primary shrink-0" />
                 admin@bhintunahouse.com.au
               </a>
-              <a
-                href="https://maps.google.com/?q=14/55+Phillip+St+Parramatta+NSW+2150"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-muted-foreground text-sm hover:text-primary transition-colors"
-              >
-                <MapPin className="w-4 h-4 mt-0.5 text-primary shrink-0" />
-                14/55 Phillip St, Parramatta NSW 2150
-              </a>
-            </div>
-
-            {/* Social */}
-            <div className="flex gap-4 mt-6">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Instagram"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Facebook"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground text-xs">
-            © {new Date().getFullYear()} Bhintuna House — Nepali Restaurant. All rights reserved.
+        <div className="mt-12 pt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-neutral-500 text-xs text-center sm:text-left">
+            © {new Date().getFullYear()} Bhintuna House - Nepali Restaurant. All rights reserved.
           </p>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/bhintunahouse/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-neutral-700 bg-neutral-800/80 flex items-center justify-center text-neutral-400 hover:text-primary hover:border-primary transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.facebook.com/people/Bhintuna-House-Nepali-Restaurant/61579875443199/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-neutral-700 bg-neutral-800/80 flex items-center justify-center text-neutral-400 hover:text-primary hover:border-primary transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@bhintuna.house"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-neutral-700 bg-neutral-800/80 flex items-center justify-center text-neutral-400 hover:text-primary hover:border-primary transition-colors"
+              aria-label="TikTok"
+            >
+              <Music2 className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

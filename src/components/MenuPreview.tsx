@@ -1,5 +1,7 @@
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 // Featured Dishes - Mixed categories for variety (6 per row)
 const featuredDishes = [
@@ -27,16 +29,33 @@ interface FoodItem {
   category: string;
 }
 
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 const FoodCard = ({ item }: { item: FoodItem }) => (
-  <div className="group flex-shrink-0 w-64 md:w-72">
+  <motion.div className="group flex-shrink-0 w-64 md:w-72" variants={cardVariants}>
     <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 h-full">
       {/* Image */}
       <div className="aspect-[4/3] overflow-hidden relative">
-        <img
+        <motion.img
           src={item.image}
           alt={item.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
         {/* Price Badge */}
@@ -55,29 +74,22 @@ const FoodCard = ({ item }: { item: FoodItem }) => (
           {item.name}
         </h4>
         {/* Description */}
-        <p className="text-navy/70 text-sm leading-relaxed line-clamp-2">
+        <p className="text-navy/80 text-sm leading-relaxed line-clamp-2">
           {item.description}
         </p>
       </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const MenuPreview = () => {
-  // Split dishes into 2 rows for display
-  const firstHalf = featuredDishes.slice(0, 6);
-  const secondHalf = featuredDishes.slice(6);
-
   // Duplicate items for seamless infinite scroll
   const duplicateRow = (items: FoodItem[]) => [...items, ...items, ...items];
 
-  const row1Items = duplicateRow(firstHalf);
-  const row2Items = duplicateRow(secondHalf);
+  const rowItems = duplicateRow(featuredDishes);
 
-  const row1ContainerRef = useRef<HTMLDivElement>(null);
-  const row2ContainerRef = useRef<HTMLDivElement>(null);
-  const [paused1, setPaused1] = useState(false);
-  const [paused2, setPaused2] = useState(false);
+  const rowContainerRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
 
   // Scroll one item when button is clicked
   const handleScroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right', setPaused: (val: boolean) => void) => {
@@ -95,7 +107,8 @@ const MenuPreview = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-cream" id="menu">
+    <AnimateOnScroll>
+      <section className="py-16 md:py-20 bg-cream" id="menu">
       <div className="container">
         {/* Main Heading */}
         <div className="text-center mb-12">
@@ -105,25 +118,31 @@ const MenuPreview = () => {
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-navy">
             Taste Our Specialties
           </h2>
-          <p className="text-navy/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <motion.span
+            className="block h-0.5 w-28 bg-primary mx-auto mb-5"
+            initial={{ scaleX: 0, transformOrigin: "left" }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          />
+          <p className="text-navy/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Discover our most loved dishes, handpicked by our chefs and customers.
           </p>
         </div>
 
-        {/* Auto-Sliding Rows with Navigation Buttons */}
-        <div className="w-full overflow-hidden space-y-8 py-4">
-          {/* Row 1 - Auto-Slide Left with Manual Controls */}
+        {/* Auto-Sliding Row with Navigation Buttons */}
+        <div className="w-full overflow-hidden py-4">
           <div className="relative">
             {/* Navigation Buttons - Always Visible */}
             <button
-              onClick={() => handleScroll(row1ContainerRef, 'left', setPaused1)}
+              onClick={() => handleScroll(rowContainerRef, 'left', setPaused)}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white shadow-lg rounded-full flex items-center justify-center text-navy hover:text-primary transition-all hover:scale-110"
               aria-label="Previous item"
             >
               <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
             <button
-              onClick={() => handleScroll(row1ContainerRef, 'right', setPaused1)}
+              onClick={() => handleScroll(rowContainerRef, 'right', setPaused)}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white shadow-lg rounded-full flex items-center justify-center text-navy hover:text-primary transition-all hover:scale-110"
               aria-label="Next item"
             >
@@ -132,53 +151,22 @@ const MenuPreview = () => {
 
             {/* Auto-Sliding Container with Hover Pause */}
             <div 
-              ref={row1ContainerRef}
+              ref={rowContainerRef}
               className="overflow-x-auto scrollbar-hide scroll-smooth"
-              onMouseEnter={() => setPaused1(true)}
-              onMouseLeave={() => setPaused1(false)}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
             >
-              <div 
-                className={`flex gap-8 animate-slide-left ${paused1 ? 'pause' : ''}`}
+              <motion.div
+                className={`flex gap-8 animate-slide-left ${paused ? 'pause' : ''}`}
+                variants={gridContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
               >
-                {row1Items.map((item, index) => (
+                {rowItems.map((item, index) => (
                   <FoodCard key={`${item.name}-${index}`} item={item} />
                 ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Row 2 - Auto-Slide Right with Manual Controls */}
-          <div className="relative">
-            {/* Navigation Buttons - Always Visible */}
-            <button
-              onClick={() => handleScroll(row2ContainerRef, 'left', setPaused2)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white shadow-lg rounded-full flex items-center justify-center text-navy hover:text-primary transition-all hover:scale-110"
-              aria-label="Previous item"
-            >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-            <button
-              onClick={() => handleScroll(row2ContainerRef, 'right', setPaused2)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white shadow-lg rounded-full flex items-center justify-center text-navy hover:text-primary transition-all hover:scale-110"
-              aria-label="Next item"
-            >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-
-            {/* Auto-Sliding Container with Hover Pause */}
-            <div 
-              ref={row2ContainerRef}
-              className="overflow-x-auto scrollbar-hide scroll-smooth"
-              onMouseEnter={() => setPaused2(true)}
-              onMouseLeave={() => setPaused2(false)}
-            >
-              <div 
-                className={`flex gap-8 animate-slide-right ${paused2 ? 'pause' : ''}`}
-              >
-                {row2Items.map((item, index) => (
-                  <FoodCard key={`${item.name}-${index}`} item={item} />
-                ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -194,7 +182,8 @@ const MenuPreview = () => {
           </a>
         </div>
       </div>
-    </section>
+      </section>
+    </AnimateOnScroll>
   );
 };
 

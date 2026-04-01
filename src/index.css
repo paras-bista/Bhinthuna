@@ -85,6 +85,48 @@
 }
 
 @layer utilities {
+  .logo-container {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .logo-image {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: all 300ms ease-in-out;
+  }
+
+  .logo-container:hover .logo-image {
+    filter: brightness(1.1);
+  }
+
+  /* Optional fallback for PNG/JPG logos with dark background remnants. */
+  .logo-image-screen {
+    mix-blend-mode: screen;
+  }
+
+  /* Optional advanced cutout for monochrome assets. */
+  .logo-mask-gold {
+    background-color: hsl(var(--gold));
+    -webkit-mask-image: url("/src/assets/logo.png");
+    mask-image: url("/src/assets/logo.png");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
   .text-gold-gradient {
     background: linear-gradient(135deg, hsl(37, 72%, 59%), hsl(37, 60%, 72%));
     -webkit-background-clip: text;
@@ -93,7 +135,7 @@
   }
 
   .bg-warm-overlay {
-    background: linear-gradient(180deg, hsla(216, 70%, 14%, 0.4) 0%, hsla(216, 70%, 14%, 0.85) 100%);
+    background: linear-gradient(180deg, hsla(216, 70%, 14%, 0.52) 0%, hsla(216, 70%, 14%, 0.9) 100%);
   }
 
   .bg-hero-gradient {

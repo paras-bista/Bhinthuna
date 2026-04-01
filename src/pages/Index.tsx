@@ -7,7 +7,41 @@ import AboutTeaser from "@/components/AboutTeaser";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
 import FinalCTA from "@/components/FinalCTA";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+
+const homeFAQs = [
+  {
+    question: "Do you take table bookings?",
+    answer:
+      "Yes, we welcome bookings for lunch and dinner. For weekends and group dining, we recommend reserving ahead to secure your preferred time.",
+  },
+  {
+    question: "Do you have vegetarian and vegan options?",
+    answer:
+      "Absolutely. Our menu includes a range of vegetarian and vegan dishes, prepared with the same authentic Burmese flavors and fresh ingredients.",
+  },
+  {
+    question: "Can you cater for food allergies?",
+    answer:
+      "Yes. Please let our team know about any allergies when you order, and we will guide you to suitable menu choices and preparation options.",
+  },
+  {
+    question: "Do you offer takeaway and delivery?",
+    answer:
+      "We offer takeaway daily, and delivery is available in selected surrounding areas. You can call us directly for current delivery coverage.",
+  },
+  {
+    question: "Is parking available near the restaurant?",
+    answer:
+      "Yes, there is convenient parking around the Parramatta area, including nearby street and public parking options within walking distance.",
+  },
+  {
+    question: "Do you provide catering for private events?",
+    answer:
+      "Yes, we cater for corporate functions, birthdays, and celebrations. Visit our catering page or contact us to plan a package that fits your event.",
+  },
+];
 
 const Index = () => {
   return (
@@ -96,12 +130,20 @@ const Index = () => {
         <Header />
         <main>
           <Hero />
-          <MenuPreview />
+          <div className="bg-gradient-to-b from-navy via-cream/80 to-cream">
+            <MenuPreview />
+          </div>
           <CateringTeaser />
           <AboutTeaser />
           <ContactSection />
           <Testimonials limit={6} />
           <FinalCTA />
+          <div id="faq" className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
+            <FAQSection
+              faqs={homeFAQs}
+              subtitle="Everything you may want to know before visiting Bhintuna House"
+            />
+          </div>
         </main>
         <Footer />
       </div>
