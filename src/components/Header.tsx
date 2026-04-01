@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "../assets/logo.png";
 
 const navItems = [
   { label: "Home", href: "/", type: "route" },
@@ -45,7 +45,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md bg-black/60 shadow-header" : "bg-transparent"
+        scrolled ? "backdrop-blur-md bg-black/70 shadow-header" : "bg-transparent"
       }`}
     >
       <div
@@ -57,17 +57,15 @@ const Header = () => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.98 }}
         >
-        <Link to="/" onClick={handleNavClick} className="logo-container flex items-center gap-2 shrink-0">
+        <Link to="/" onClick={handleNavClick} className="flex items-center gap-2 shrink-0">
           <img
             src={logo}
             alt="Bhintuna House Logo"
-            className={`logo-image w-auto transition-all duration-300 ease-in-out ${
-              scrolled
-                ? "h-14 md:h-14"
-                : "h-20 md:h-24 logo-image-screen"
-            }`}
+            className="h-24 w-auto object-contain"
           />
         </Link>
           </motion.div>

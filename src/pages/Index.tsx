@@ -135,6 +135,11 @@ const Index = () => {
           </div>
           <CateringTeaser />
           <AboutTeaser />
+          <div className="bg-white">
+            <div className="container">
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            </div>
+          </div>
           <ContactSection />
           <Testimonials limit={6} />
           <FinalCTA />

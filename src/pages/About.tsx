@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Badge } from "@/components/ui/badge";
 import aboutBg from "@/assets/hero-bg.jpg";
 
 const credibilityPoints = [
@@ -74,25 +75,23 @@ const About = () => {
       <div className="min-h-screen bg-background">
         <Header />
 
-        {/* Hero Section */}
-        <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 min-h-[50vh] flex items-center">
-          <div className="absolute inset-0">
-            <img
-              src={aboutBg}
-              alt="About Bhintuna House"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-navy-dark/80" />
-          </div>
+        <main className="pt-20 md:pt-24">
 
-          <div className="relative container text-center">
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-cream">
+        {/* Hero Section */}
+        <section className="relative bg-navy py-12 md:py-16 overflow-hidden">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&h=1080&fit=crop&q=80')] bg-cover bg-center opacity-10" />
+          <div className="container relative z-10">
+            <div className="max-w-3xl mx-auto text-center">
+              <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
+                ABOUT US
+              </Badge>
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               About Us
-            </h1>
-            <p className="text-cream/85 text-base md:text-lg max-w-2xl mx-auto mt-4">
+              </h1>
+              <p className="text-foreground/80 text-lg md:text-xl max-w-2xl mx-auto">
               Our story, our people, and the traditions that shape every dish we serve.
-            </p>
+              </p>
+            </div>
           </div>
         </section>
 
@@ -252,19 +251,19 @@ const About = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="tel:+610286064818"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-navy-dark text-white font-semibold text-base hover:bg-navy hover:scale-105 transition-all shadow-xl hover:shadow-2xl"
+                  className="inline-flex items-center justify-center gap-2 min-w-[220px] px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base hover:bg-gold-dark hover:scale-105 transition-all shadow-xl hover:shadow-2xl"
                 >
                   Call & Order Now
                 </a>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border-2 border-white text-white font-semibold text-base hover:bg-white hover:text-orange-600 transition-all shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 min-w-[220px] px-8 py-4 rounded-lg border-2 border-white text-white bg-white/5 font-semibold text-base hover:bg-white hover:text-navy transition-all shadow-lg"
                 >
                   Get In Touch
                 </Link>
                 <Link
                   to="/catering"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-white/20 backdrop-blur text-white font-semibold text-base hover:bg-white/30 transition-all border-2 border-white/30 hover:border-white/50"
+                  className="inline-flex items-center justify-center gap-2 min-w-[220px] px-8 py-4 rounded-lg bg-cream text-navy font-semibold text-base hover:bg-white transition-all border-2 border-primary/40 hover:border-primary shadow-lg"
                 >
                   Explore Catering
                 </Link>
@@ -272,6 +271,8 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        </main>
 
         <Footer />
       </div>

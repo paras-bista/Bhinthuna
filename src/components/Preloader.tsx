@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "../assets/logo.png";
 
 const Preloader = () => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 1800);
+    const timer = window.setTimeout(() => setIsLoading(false), 2000);
     return () => window.clearTimeout(timer);
   }, []);
 
   return (
     <AnimatePresence>
-      {loading && (
+      {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[120] bg-navy-dark flex items-center justify-center"
+          className="fixed inset-0 z-[120] bg-[#0A1428] flex items-center justify-center"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.5 }}
         >
-          <img
+          <motion.img
             src={logo}
             alt="Bhintuna House"
-            className="h-24 md:h-28 w-auto animate-pulse"
+            className="h-32 w-auto object-contain"
+            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           />
         </motion.div>
       )}
