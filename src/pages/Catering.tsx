@@ -215,7 +215,7 @@ const Catering = () => {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               />
-              <p className="text-navy/80 max-w-2xl mx-auto">
+              <p className="text-white max-w-2xl mx-auto">
                 Choose from our carefully curated packages or create a custom menu tailored to your needs
               </p>
             </div>
@@ -228,9 +228,9 @@ const Catering = () => {
               viewport={{ once: true, margin: "-80px" }}
             >
               {cateringPackages.map((pkg) => (
-                <motion.div key={pkg.id} variants={cardVariants} transition={{ duration: 0.5, ease: "easeOut" }}>
+                <motion.div key={pkg.id} className="h-full" variants={cardVariants} transition={{ duration: 0.5, ease: "easeOut" }}>
                 <Card
-                  className={`overflow-hidden group bg-white text-navy border border-primary/15 hover:shadow-xl transition-all duration-300 ${
+                  className={`h-full flex flex-col overflow-hidden group bg-navy text-cream border border-primary/25 hover:shadow-xl transition-all duration-300 ${
                     pkg.featured ? "ring-2 ring-primary" : ""
                   }`}
                 >
@@ -266,16 +266,16 @@ const Catering = () => {
                     </div>
                   </div>
 
-                  <CardContent className="p-6">
-                    <p className="text-navy/80 mb-4">{pkg.description}</p>
+                  <CardContent className="p-6 flex-1 flex flex-col">
+                    <p className="text-cream/80 mb-4">{pkg.description}</p>
 
                     {/* Price */}
-                    <div className="bg-primary/10 rounded-lg p-4 mb-4 text-center">
-                      <div className="text-sm text-muted-foreground mb-1">Starting from</div>
+                    <div className="bg-white/10 rounded-lg p-4 mb-4 text-center">
+                      <div className="text-sm text-cream/70 mb-1">Starting from</div>
                       <div className="text-2xl md:text-3xl font-bold text-primary">
                         {pkg.pricePerPerson}
                         {pkg.pricePerPerson !== "Contact us" && (
-                          <span className="text-sm font-normal text-muted-foreground">/person</span>
+                          <span className="text-sm font-normal text-cream/70">/person</span>
                         )}
                       </div>
                     </div>
@@ -285,13 +285,13 @@ const Catering = () => {
                       {pkg.features.map((feature) => (
                         <div key={feature} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm text-cream/90">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* CTA Button */}
-                    <Button asChild className="w-full" size="lg">
+                    <Button asChild className="w-full mt-auto" size="lg">
                       <a href="#inquiry-form">Request Quote</a>
                     </Button>
                   </CardContent>
